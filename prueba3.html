@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datos De Socio Punt Jove</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 30px;
+      width: 340px;
+      text-align: center;
+      color: #3896ff;
+      border: 2px solid #3896ff;
+    }
+    .logo {
+      width: 160px;
+      margin-bottom: 20px;
+    }
+    .info {
+      font-size: 16px;
+      margin: 12px 0;
+    }
+    .label {
+      font-weight: bold;
+      display: block;
+    }
+    .btn {
+      background: #3896ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px 5px;
+      font-size: 14px;
+    }
+    .btn:hover {
+      background: #2c6ed6;
+    }
+    #loginForm, #privateArea {
+      display: none;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    input[type="text"], input[type="password"] {
+      padding: 8px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Pantalla principal -->
+    <div id="mainArea">
+      <img src="data:image/png;base64,..." alt="Logo Punt Jove" class="logo">
+      <button class="btn" onclick="showLogin()">Área personal</button>
+      <div class="info"><span class="label">Nombre:</span> Jose Francisco Cervantes Ortega</div>
+      <div class="info"><span class="label">Dirección:</span> C/ Dolores, n19, Bajo A, Mutxamel</div>
+      <div class="info"><span class="label">Fecha de nacimiento:</span> 5/09/2000</div>
+      <div class="info"><span class="label">Teléfono:</span> 673 56 53 73</div>
+      <div class="info"><span class="label">Código de socio:</span> 53007</div>
+    </div>
+
+    <!-- Formulario de login -->
+    <div id="loginForm">
+      <h3>Acceso Área Personal</h3>
+      <input type="text" id="dni" placeholder="DNI" /><br>
+      <input type="password" id="password" placeholder="Contraseña" /><br>
+      <button class="btn" onclick="login()">Entrar</button>
+      <button class="btn" onclick="goBack()">Atrás</button>
+      <div id="errorMsg" class="error"></div>
+    </div>
+
+    <!-- Área personal privada -->
+    <div id="privateArea">
+      <h3>Área Personal</h3>
+      <div class="info"><span class="label">Fecha de inscripción:</span> 01/01/2023</div>
+      <div class="info"><span class="label">Próximo pago:</span> 01/01/2026</div>
+      <div class="info"><span class="label">Estado:</span> Suscripción activa</div>
+      <button class="btn" onclick="logout()">Atrás</button>
+    </div>
+  </div>
+
+  <script>
+    function showLogin() {
+      document.getElementById("mainArea").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    }
+    function goBack() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("mainArea").style.display = "block";
+      document.getElementById("dni").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("errorMsg").innerText = "";
+    }
+    function login() {
+      let dni = document.getElementById("dni").value.toUpperCase(); // <-- forza maiúsculas
+      let pass = document.getElementById("password").value;
+      if (dni === "12345678B" && pass === "1234") { // credenciais
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("privateArea").style.display = "block";
+      } else {
+        document.getElementById("errorMsg").innerText = "DNI o contraseña incorrectos.";
+      }
+    }
+    function logout() {
+      document.getElementById("privateArea").style.display = "none";
+      document.getElementById("mainArea").style.display = "block";
+    }
+  </script>
+</body>
+</html>
