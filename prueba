@@ -106,7 +106,7 @@
     function login() {
       let dni = document.getElementById("dni").value;
       let pass = document.getElementById("password").value;
-      if (dni === "12345678A" && pass === "1234") { // <--- aquí cambias el DNI y contraseña
+      if (dni === "12345678B" && pass === "1234") { // <--- aquí cambias el DNI y contraseña
         document.getElementById("loginForm").style.display = "none";
         document.getElementById("privateArea").style.display = "block";
       } else {
